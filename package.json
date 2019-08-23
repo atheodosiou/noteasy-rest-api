@@ -1,0 +1,15 @@
+{
+  "name": "notese-rest-api",
+  "version": "1.0.0",
+  "description": "A note taking rest API",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "developer",
+    "notes"
+  ],
+  "author": "Anastasios Theodosiou",
+  "license": "ISC"
+}
