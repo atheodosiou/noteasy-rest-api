@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const {appConfig} =require('../../config/config');
 
 const notes = require('../controlers/note.controller');
 

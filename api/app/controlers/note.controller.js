@@ -3,16 +3,16 @@ const Note = require('../models/note.model.js');
 // Create and Save a new Note
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.content) {
+    if (!req.body.body) {
         return res.status(400).send({
-            message: "Note content can not be empty"
+            message: "Note body can not be empty"
         });
     }
 
     // Create a Note
     const note = new Note({
         title: req.body.title || "Untitled Note",
-        content: req.body.content
+        body: req.body.body
     });
 
     // Save Note in the database
