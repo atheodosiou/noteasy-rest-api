@@ -17,4 +17,18 @@ app.use(express.json())
 app.use(appConfig.entryPoint,userRoutes);
 app.use(appConfig.entryPoint,noteRoutes);
 
+//Handle 404 errors
+app.use((req,res,next)=>{
+    const error= new Error('Not found');
+    error.status=404;
+    next(error)
+});
+
+app.use((error,req,res,next)=>{
+    res.status(error.status || 500).json({
+        error:{
+            message:error.message || 'Internal Server Error'
+        }})
+});
+
 module.exports=app;
