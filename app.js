@@ -1,7 +1,10 @@
 const express = require('express');
 const {appConfig}=require('./api/config/config');
-const noteasyRoutes= require('./api/app/routes/note.routes');
 const morgan = require('morgan');
+
+//Importing routes
+const noteRoutes= require('./api/app/routes/note.routes');
+const userRoutes= require('./api/app/routes/user.routes');
 
 // create express app
 const app = express();
@@ -10,7 +13,8 @@ app.use(morgan('dev'));
 
 app.use(express.json())
 
-
-app.use(appConfig.entryPoint,noteasyRoutes);
+//Handling routes
+app.use(appConfig.entryPoint,userRoutes);
+app.use(appConfig.entryPoint,noteRoutes);
 
 module.exports=app;
