@@ -1,7 +1,7 @@
 const express = require('express');
-const {appConfig}=require('./config/config');
-const {Connect} =require('./app/functions/db/db');
-const {errorHandler} = require('./app/functions/utils/utils');
+const {appConfig}=require('./api/config/config');
+const {Connect} =require('./api/app/functions/db/db');
+const {errorHandler} = require('./api/app/functions/utils/utils');
 require('dotenv').config();
 
 // create express app
@@ -13,7 +13,7 @@ app.use(express.json())
 //ADD: CORS handling
 
 // Require Notease routes
-const noteasyRoutes = require('./app/routes/note.routes.js')
+const noteasyRoutes = require('./api/app/routes/note.routes')
 
 // define starting point
 app.get(appConfig.entryPoint, (req, res) => {
