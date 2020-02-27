@@ -5,8 +5,9 @@ const jwt = require('jsonwebtoken');
 exports.register = async (req, res, next) => {
     const user = new User(req.body);
     try {
+        const token = await user.generateAuthToken();
         await user.save().then(doc => {
-            res.status(201).json(doc);
+            res.status(201).json({token,user:doc});
         });
     } catch (error) {
         next(error);
