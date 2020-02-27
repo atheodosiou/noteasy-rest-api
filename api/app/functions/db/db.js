@@ -5,7 +5,8 @@ function Connect(connectionString) {
     // Connecting to the database
     return mongoose.connect(connectionString, {
         useNewUrlParser: true,
-        useUnifiedTopology:true
+        useUnifiedTopology:true,
+        useCreateIndex:true
     });
 }
 
