@@ -1,11 +1,11 @@
 const express = require('express');
-const {appConfig}=require('./api/config/config');
+const {appConfig}=require('../config/config');
 const morgan = require('morgan');
-const {handleCORS} = require('./api/app/functions/utils/cors');
+const {handleCORS} = require('./functions/utils/cors');
 
 //Importing routes
-const noteRoutes= require('./api/app/routes/note.routes');
-const userRoutes= require('./api/app/routes/user.routes');
+const noteRoutes= require('./routes/note.routes');
+const userRoutes= require('./routes/user.routes');
 
 // create express app
 const app = express();
