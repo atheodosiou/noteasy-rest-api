@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const {appConfig} = require('../../config/config');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = mongoose.Schema({
     email: {
@@ -13,10 +14,26 @@ const UserSchema = mongoose.Schema({
             console.log('I should add email validation here!!!',value)
         }
     },
-    password: {type:String,required:true}
+    password: {type:String,required:true},
+    tokens:[{
+        token:{
+            type:String,
+            required:true
+        }
+    }],
 }, {
     timestamps: true
 });
+
+//Define a method on an instance of User model
+UserSchema.methods.generateAuthToken = async function(){
+    const user = this;
+    const token = jwt.sign({_id:user._id.toString()},appConfig.jwt.secret);
+    user.tokens = user.tokens.concat({token});
+    await user.save();
+
+    return token;
+};
 
 //Define a new method into user's model
 UserSchema.statics.findByCredentials = async (email,password)=>{
