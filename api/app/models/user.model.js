@@ -11,7 +11,6 @@ const UserSchema = mongoose.Schema({
         lowercase:true,
         validate(value){
             console.log('I should add email validation here!!!',value)
-            joi.
         }
     },
     password: {type:String,required:true}
