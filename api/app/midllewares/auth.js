@@ -18,7 +18,7 @@ const auth = async (req,res,next)=>{
         next();
 
     }catch(error){
-        res.status(401).json({error:'Unauthorized Request'})
+        res.status(401).json({message:'Unauthorized Request',error:error})
     }
 };
 

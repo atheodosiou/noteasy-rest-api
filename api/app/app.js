@@ -5,7 +5,7 @@ const { handleCORS } = require('./functions/utils/cors');
 const auth = require('./midllewares/auth');
 
 //Importing routes
-const noteRoutes = require('./routes/note.routes');
+const notebookRoutes = require('./routes/notebook.routes');
 const userRoutes = require('./routes/user.routes');
 
 // create express app
@@ -19,7 +19,7 @@ app.use(handleCORS);
 
 //Handling routes
 app.use(appConfig.entryPoint, userRoutes);
-app.use(appConfig.entryPoint, auth, noteRoutes);
+app.use(appConfig.entryPoint, auth, notebookRoutes);
 
 //Handle 404 errors
 app.use((req, res, next) => {
